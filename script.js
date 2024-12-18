@@ -17,6 +17,36 @@ function addBookToLibrary(title, author, pages, isRead) {
    library.push(new Book(title, author, pages, isRead));
 }
 
+function displayLibrary() {
+   const libraryElement = document.querySelector(".library");
+   for (const book of library) {
+      const bookElement = document.createElement("div");
+      bookElement.classList = "book";
+      const titleElement = document.createElement("div");
+      const authorElement = document.createElement("div");
+      const pagesElement = document.createElement("div");
+      const isReadElement = document.createElement("div");
+      titleElement.classList = "title";
+      authorElement.classList = "author";
+      pagesElement.classList = "pages";
+      isReadElement.classList = "isRead";
+      titleElement.textContent = book.title;
+      authorElement.textContent = book.author;
+      pagesElement.textContent = book.pages;
+      isReadElement.textContent = book.isRead;
+
+      bookElement.append(
+         titleElement,
+         authorElement,
+         pagesElement,
+         isReadElement
+      );
+      libraryElement.append(bookElement);
+   }
+}
+
+displayLibrary();
+
 // Retrieve book data from form:
 const addBookForm = document.querySelector("#addBook");
 const titleInput = document.querySelector("#title");
