@@ -2,6 +2,10 @@
 
 const library = [];
 
+library.push(new Book("title1", "author1", "pages1", true));
+library.push(new Book("title2", "author2", "pages2", true));
+library.push(new Book("title3", "author3", "pages3", false));
+
 function Book(title, author, pages, isRead) {
    this.title = title;
    this.author = author;
@@ -9,6 +13,11 @@ function Book(title, author, pages, isRead) {
    this.isRead = isRead;
 }
 
+function addBookToLibrary(title, author, pages, isRead) {
+   library.push(new Book(title, author, pages, isRead));
+}
+
+// Retrieve book data from form:
 const addBookForm = document.querySelector("#addBook");
 const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
@@ -18,13 +27,11 @@ const addBookButton = document.querySelector("#addBook input[type='submit']");
 
 addBookButton.addEventListener("click", (event) => {
    event.preventDefault();
-   library.push(
-      new Book(
-         titleInput.value,
-         authorInput.value,
-         pagesInput.value,
-         isRead.checked
-      )
+   addBookToLibrary(
+      titleInput.value,
+      authorInput.value,
+      pagesInput.value,
+      isReadInput.checked
    );
    addBookForm.reset();
 });
