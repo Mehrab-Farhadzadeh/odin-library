@@ -13,6 +13,10 @@ function Book(title, author, pages, isRead) {
    this.isRead = isRead;
 }
 
+Book.prototype.toggleReadStatus = function () {
+   this.isRead = !this.isRead;
+};
+
 function addBookToLibrary(title, author, pages, isRead) {
    library.push(new Book(title, author, pages, isRead));
 }
@@ -37,6 +41,20 @@ function displayLibrary() {
       pagesElement.textContent = book.pages;
       isReadElement.textContent = book.isRead;
 
+      // Toggle read status
+      const toggleReadStatusButton = document.createElement("button");
+      toggleReadStatusButton.classList = "toggle-read-status";
+      toggleReadStatusButton.setAttribute(
+         "data-attribute",
+         library.indexOf(book)
+      );
+      toggleReadStatusButton.textContent = "Toggle read status";
+      toggleReadStatusButton.addEventListener("click", (e) => {
+         const index = e.target.getAttribute("data-attribute");
+         library.at(index).toggleReadStatus();
+         displayLibrary();
+      });
+
       // Delete Book
       const deleteBookButton = document.createElement("button");
       deleteBookButton.classList = "delete";
@@ -53,6 +71,7 @@ function displayLibrary() {
          authorElement,
          pagesElement,
          isReadElement,
+         toggleReadStatusButton,
          deleteBookButton
       );
       libraryElement.append(bookElement);
