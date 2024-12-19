@@ -47,13 +47,21 @@ function displayLibrary() {
 
 displayLibrary();
 
-// Retrieve book data from form:
-const addBookForm = document.querySelector("#addBook");
+// # Show dialog
+const showDialogButton = document.querySelector("#showAddBookDialog");
+const addBookDialog = document.querySelector("#addBookDialog");
+
+showDialogButton.addEventListener("click", () => {
+   addBookDialog.showModal();
+});
+
+// Retrieve book data from form and add it to library
+const addBookForm = document.querySelector("#addBookForm");
 const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
 const pagesInput = document.querySelector("#pages");
 const isReadInput = document.querySelector("#isRead");
-const addBookButton = document.querySelector("#addBook input[type='submit']");
+const addBookButton = document.querySelector("#addBookBtn");
 
 addBookButton.addEventListener("click", (event) => {
    event.preventDefault();
