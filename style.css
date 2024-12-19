@@ -23,4 +23,19 @@ body {
 #addBookDialog {
    background-color: #1f1f1f;
    color: #eee;
+
+   label {
+      display: inline-block;
+      width: 50px;
+   }
+
+   button[value="close"] {
+      position: relative;
+      left: 180px;
+      top: -13px;
+      margin-left: auto;
+      border-radius: 50%;
+      height: 25px;
+      width: 25px;
+   }
 }
