@@ -4,9 +4,20 @@ body {
    padding: 2rem;
 }
 
-.book {
-   display: flex;
+.library {
+   padding: 2em 4em;
+   border: 1px solid salmon;
+   display: grid;
    gap: 1rem;
+}
+
+.book {
+   display: grid;
+   grid-template-columns: repeat(6, 1fr);
+   gap: 1rem;
+   align-items: center;
+   background-color: rgb(71, 17, 17);
+   padding: 1em 4em;
 }
 
 #addBookDialog {
