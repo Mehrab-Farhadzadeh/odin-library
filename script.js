@@ -105,7 +105,8 @@ const pagesInput = document.querySelector("#pages");
 const isReadInput = document.querySelector("#isRead");
 const addBookButton = document.querySelector("#addBookBtn");
 
-addBookButton.addEventListener("click", (event) => {
+addBookForm.addEventListener("submit", (event) => {
+   if (event.submitter.getAttribute("value") === "close") return;
    event.preventDefault();
    addBookToLibrary(
       titleInput.value,
