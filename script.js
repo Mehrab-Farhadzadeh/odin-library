@@ -37,11 +37,23 @@ function displayLibrary() {
       pagesElement.textContent = book.pages;
       isReadElement.textContent = book.isRead;
 
+      // Delete Book
+      const deleteBookButton = document.createElement("button");
+      deleteBookButton.classList = "delete";
+      deleteBookButton.setAttribute("data-attribute", library.indexOf(book));
+      deleteBookButton.textContent = "Del";
+      deleteBookButton.addEventListener("click", (e) => {
+         const index = e.target.getAttribute("data-attribute");
+         library.splice(index, 1);
+         displayLibrary();
+      });
+
       bookElement.append(
          titleElement,
          authorElement,
          pagesElement,
-         isReadElement
+         isReadElement,
+         deleteBookButton
       );
       libraryElement.append(bookElement);
    }
