@@ -2,10 +2,6 @@
 
 const library = [];
 
-library.push(new Book("title1", "author1", "pages1", true));
-library.push(new Book("title2", "author2", "pages2", true));
-library.push(new Book("title3", "author3", "pages3", false));
-
 function Book(title, author, pages, isRead) {
    this.title = title;
    this.author = author;
@@ -21,10 +17,23 @@ function addBookToLibrary(title, author, pages, isRead) {
    library.push(new Book(title, author, pages, isRead));
 }
 
+// Dummy filler content
+library.push(new Book("title1", "author1", "pages1", true));
+library.push(new Book("title2", "author2", "pages2", true));
+library.push(new Book("title3", "author3", "pages3", false));
+
 function displayLibrary() {
    const libraryElement = document.querySelector(".library");
-   // Clear the library
-   libraryElement.innerHTML = "";
+   // Header
+   libraryElement.innerHTML = `<div class="book">
+         <h3 class="title">Title</h3>
+         <h3 class="author">Author</h3>
+         <h3 class="pages">Pages</h3>
+         <h3 class="isRead">Read Status</h3>
+         <h3 class="toggle-read-status">Toggle read status</h3>
+         <h3 class="delete">Delete Button</h3>
+      </div>`;
+   // Create and add book cards
    for (const book of library) {
       const bookElement = document.createElement("div");
       bookElement.classList = "book";
@@ -41,7 +50,7 @@ function displayLibrary() {
       pagesElement.textContent = book.pages;
       isReadElement.textContent = book.isRead;
 
-      // Toggle read status
+      // Toggle read status button
       const toggleReadStatusButton = document.createElement("button");
       toggleReadStatusButton.classList = "toggle-read-status";
       toggleReadStatusButton.setAttribute(
@@ -55,7 +64,7 @@ function displayLibrary() {
          displayLibrary();
       });
 
-      // Delete Book
+      // Delete Book button
       const deleteBookButton = document.createElement("button");
       deleteBookButton.classList = "delete";
       deleteBookButton.setAttribute("data-attribute", library.indexOf(book));
@@ -80,7 +89,7 @@ function displayLibrary() {
 
 displayLibrary();
 
-// # Show dialog
+// Show dialog
 const showDialogButton = document.querySelector("#showAddBookDialog");
 const addBookDialog = document.querySelector("#addBookDialog");
 
