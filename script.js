@@ -19,6 +19,8 @@ function addBookToLibrary(title, author, pages, isRead) {
 
 function displayLibrary() {
    const libraryElement = document.querySelector(".library");
+   // Clear the library
+   libraryElement.innerHTML = "";
    for (const book of library) {
       const bookElement = document.createElement("div");
       bookElement.classList = "book";
@@ -72,4 +74,5 @@ addBookButton.addEventListener("click", (event) => {
       isReadInput.checked
    );
    addBookForm.reset();
+   displayLibrary();
 });
