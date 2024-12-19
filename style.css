@@ -1,0 +1,15 @@
+body {
+   background-color: #1f1f1f;
+   color: #eee;
+   padding: 2rem;
+}
+
+.book {
+   display: flex;
+   gap: 1rem;
+}
+
+#addBookDialog {
+   background-color: #1f1f1f;
+   color: #eee;
+}
