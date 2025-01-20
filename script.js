@@ -2,16 +2,17 @@
 
 const library = [];
 
-function Book(title, author, pages, isRead) {
-   this.title = title;
-   this.author = author;
-   this.pages = pages;
-   this.isRead = isRead;
+class Book {
+   constructor(title, author, pages, isRead) {
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+      this.isRead = isRead;
+   }
+   toggleReadStatus() {
+      this.isRead = !this.isRead;
+   }
 }
-
-Book.prototype.toggleReadStatus = function () {
-   this.isRead = !this.isRead;
-};
 
 function addBookToLibrary(title, author, pages, isRead) {
    library.push(new Book(title, author, pages, isRead));
